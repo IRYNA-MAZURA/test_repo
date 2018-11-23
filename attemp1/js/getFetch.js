@@ -114,14 +114,14 @@ nextButton.onclick = () =>{
         arrOfElement[0].remove();
     }
 
-    indexOfLeftVideo+=4;
+    indexOfLeftVideo+=getCurrentVideoCount();
     console.log('zzz'+indexOfLeftVideo);
     //console.log(indexOfLeftVideo);
-    console.log('zzz'+(arr.length - indexOfLeftVideo -getCurrentVideoCount()));
     //условие додумать, когда добавлять видосики
     if((arr.length - indexOfLeftVideo -getCurrentVideoCount()) <= getCurrentVideoCount()) {
         console.log('qw' + (arr.length - indexOfLeftVideo -getCurrentVideoCount()));
         sendRequest(nextPageToken);
+
     }
     else {
         OutputVideo();
@@ -133,51 +133,54 @@ let videoCount;
 window.onresize = function () {
     console.log('onResize');
     console.log('qwerty'+videoCount);
-    if (window.screen.width <= 1170 && videoCount == 4) {
+    if (window.innerWidth <= 1170 && videoCount == 4) {
         document.getElementsByClassName('container')[3].remove();
         videoCount = 3;
         console.log('ss1'+videoCount);
     }
 
-    if (window.screen.width <= 860 && videoCount == 3) {
+    if (window.innerWidth <= 860 && videoCount == 3) {
         document.getElementsByClassName('container')[2].remove();
         videoCount = 2;
         console.log('ss2'+videoCount);
     }
 
-    if (window.screen.width <= 595 && videoCount == 2) {
+    if (window.innerWidth <= 595 && videoCount == 2) {
         document.getElementsByClassName('container')[1].remove();
         videoCount = 1;
         console.log('ss3'+videoCount);
     }
 
 
-    if (window.screen.width > 595 && videoCount == 1) {
+    if (window.innerWidth > 595 && videoCount == 1) {
         DrawInfo(arr[indexOfLeftVideo+1]);
         videoCount = 2;
         console.log(videoCount);
     }
 
-    if (window.screen.width > 860 && videoCount == 2) {
+    if (window.innerWidth > 860 && videoCount == 2) {
         DrawInfo(arr[indexOfLeftVideo+2]);
         videoCount = 3;
     }
 
-    if (window.screen.width > 1170 && videoCount == 3) {
-        DrawInfo(arr[indexOfLeftVideo+4]);
+    if (window.innerWidth > 1170 && videoCount == 3) {
+        console.log(indexOfLeftVideo + '11111111');
+        console.log(arr[indexOfLeftVideo+4]);
+        DrawInfo(arr[indexOfLeftVideo+3]);
         videoCount = 4;
+
     }
 
 };
 
 function getCurrentVideoCount(){
     console.log(innerWidth);
-    if(window.screen.width <= 595)
+    if(window.innerWidth <= 595)
         return 1;
     else
-        if(window.screen.width >= 595)
-            if(window.screen.width >= 861)
-                if(window.screen.width >= 1170)
+        if(window.innerWidth >= 595)
+            if(window.innerWidth >= 861)
+                if(window.innerWidth >= 1170)
                     return 4;
                 else
                     return 3;
