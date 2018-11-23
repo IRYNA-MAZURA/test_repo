@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e48330db-0292-411d-9d79-9e38427e830e" name="Default" comment="" />
+    <list default="true" id="e48330db-0292-411d-9d79-9e38427e830e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/attemp1/js/getFetch.js" afterPath="$PROJECT_DIR$/attemp1/js/getFetch.js" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -27,14 +29,14 @@
       <file leaf-file-name="getFetch.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/attemp1/js/getFetch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+            <state relative-caret-position="230">
+              <caret line="173" column="2" lean-forward="true" selection-start-line="173" selection-start-column="2" selection-end-line="173" selection-end-column="2" />
               <folding>
-                <marker date="1543009244492" expanded="true" signature="2713:3010" ph="..." />
-                <marker date="1543009244492" expanded="true" signature="2743:3003" ph="..." />
-                <marker date="1543009244492" expanded="true" signature="2773:2917" ph="..." />
-                <marker date="1543009244492" expanded="true" signature="2852:2910" ph="..." />
-                <marker date="1543009244492" expanded="true" signature="2936:2996" ph="..." />
+                <marker date="1543013435883" expanded="true" signature="2713:3010" ph="..." />
+                <marker date="1543013435883" expanded="true" signature="2743:3003" ph="..." />
+                <marker date="1543013435883" expanded="true" signature="2773:2917" ph="..." />
+                <marker date="1543013435883" expanded="true" signature="2852:2910" ph="..." />
+                <marker date="1543013435883" expanded="true" signature="2936:2996" ph="..." />
               </folding>
             </state>
           </provider>
@@ -143,12 +145,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543000633335</updated>
-      <workItem from="1543000637143" duration="5331000" />
+      <workItem from="1543000637143" duration="5736000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5331000" />
+    <option name="totallyTimeSpent" value="5736000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -194,14 +196,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/attemp1/js/getFetch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+        <state relative-caret-position="230">
+          <caret line="173" column="2" lean-forward="true" selection-start-line="173" selection-start-column="2" selection-end-line="173" selection-end-column="2" />
           <folding>
-            <marker date="1543009244492" expanded="true" signature="2713:3010" ph="..." />
-            <marker date="1543009244492" expanded="true" signature="2743:3003" ph="..." />
-            <marker date="1543009244492" expanded="true" signature="2773:2917" ph="..." />
-            <marker date="1543009244492" expanded="true" signature="2852:2910" ph="..." />
-            <marker date="1543009244492" expanded="true" signature="2936:2996" ph="..." />
+            <marker date="1543013435883" expanded="true" signature="2713:3010" ph="..." />
+            <marker date="1543013435883" expanded="true" signature="2743:3003" ph="..." />
+            <marker date="1543013435883" expanded="true" signature="2773:2917" ph="..." />
+            <marker date="1543013435883" expanded="true" signature="2852:2910" ph="..." />
+            <marker date="1543013435883" expanded="true" signature="2936:2996" ph="..." />
           </folding>
         </state>
       </provider>
