@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e48330db-0292-411d-9d79-9e38427e830e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/attemp1/js/getFetch.js" afterPath="$PROJECT_DIR$/attemp1/js/getFetch.js" />
+      <change beforePath="$PROJECT_DIR$/attemp1/css/css.css" afterPath="$PROJECT_DIR$/attemp1/css/css.css" />
+      <change beforePath="$PROJECT_DIR$/attemp1/index.html" afterPath="$PROJECT_DIR$/attemp1/index.html" />
       <change beforePath="$PROJECT_DIR$/attemp1/js/insertSearchField.js" afterPath="$PROJECT_DIR$/attemp1/js/insertSearchField.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,8 +21,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/attemp1/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+            <state relative-caret-position="67">
+              <caret line="14" column="61" lean-forward="true" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -30,8 +31,8 @@
       <file leaf-file-name="css.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/attemp1/css/css.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="499">
+              <caret line="206" column="1" lean-forward="false" selection-start-line="206" selection-start-column="1" selection-end-line="206" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -50,8 +51,8 @@
       <file leaf-file-name="insertSearchField.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/attemp1/js/insertSearchField.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="235" column="0" lean-forward="true" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
+            <state relative-caret-position="259">
+              <caret line="299" column="57" lean-forward="false" selection-start-line="299" selection-start-column="57" selection-end-line="299" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -120,10 +121,10 @@
       <list>
         <option value="$PROJECT_DIR$/attemp1/js/insertNavigation.js" />
         <option value="$PROJECT_DIR$/attemp1/js/index.js" />
-        <option value="$PROJECT_DIR$/attemp1/css/css.css" />
         <option value="$PROJECT_DIR$/attemp1/docs/index.html" />
-        <option value="$PROJECT_DIR$/attemp1/index.html" />
         <option value="$PROJECT_DIR$/attemp1/js/getFetch.js" />
+        <option value="$PROJECT_DIR$/attemp1/css/css.css" />
+        <option value="$PROJECT_DIR$/attemp1/index.html" />
         <option value="$PROJECT_DIR$/attemp1/js/insertSearchField.js" />
       </list>
     </option>
@@ -207,7 +208,7 @@
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/USTALA" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
@@ -237,12 +238,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543000633335</updated>
-      <workItem from="1543000637143" duration="29579000" />
+      <workItem from="1543000637143" duration="31396000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29579000" />
+    <option name="totallyTimeSpent" value="31396000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -310,18 +311,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/attemp1/index.html">
+    <entry file="file://$PROJECT_DIR$/attemp1/css/css.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        <state relative-caret-position="499">
+          <caret line="206" column="1" lean-forward="false" selection-start-line="206" selection-start-column="1" selection-end-line="206" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/attemp1/css/css.css">
+    <entry file="file://$PROJECT_DIR$/attemp1/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="67">
+          <caret line="14" column="61" lean-forward="true" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
           <folding />
         </state>
       </provider>
@@ -342,8 +343,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/attemp1/js/insertSearchField.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="235" column="0" lean-forward="true" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
+        <state relative-caret-position="259">
+          <caret line="299" column="57" lean-forward="false" selection-start-line="299" selection-start-column="57" selection-end-line="299" selection-end-column="57" />
           <folding />
         </state>
       </provider>

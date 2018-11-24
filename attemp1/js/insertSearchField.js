@@ -290,8 +290,8 @@ function onResizeWindow(){
 };
 
 const BIG_SCREEN_MIN_WIDTH = 1200;
-const MEDIUM_SCREEN_MIN_WIDTH = 768;
-const SMALL_SCREEN_MAX_WIDTH = 481;
+const MEDIUM_SCREEN_MIN_WIDTH = 720;
+const SMALL_SCREEN_MAX_WIDTH = 560;
 
 function getCurrentVideoCount(){
     if(window.screen.availWidth <= SMALL_SCREEN_MAX_WIDTH)
