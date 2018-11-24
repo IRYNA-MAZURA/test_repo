@@ -1,34 +1,49 @@
-const wrapper = document.createElement('div');
-insertNavigation();
-//insertVideo();
-insertDots();
+insertLayout();
 
-function insertNavigation() {
 
-    wrapper.className = 'wrapper';
-    wrapper.innerHTML = '<section class="search-field">' +
-        '    <form class="search" autocomplete="off" name="search" method="post">' +
-        '      <input class="input" type="search" id="searchKey" name="searchKey" placeholder="Search" />' +
-        '      <button class="submit" type="submit" name="" value="">' +
-        '      </button>' +
-        '    </form>' +
-        '<button type="submit" id="next">Далее</button>'+
-        '<button type="submit" id="prev">Назад</button>'+
-        '  </section>';
+function insertLayout() {
+    const wrapper = document.createElement('div');
+    insertSearchForm();
+    insertVideoSection();
+    insertDots();
 
-    const wrapperSection = document.querySelector('body');
-    wrapperSection.appendChild(wrapper);
-    const videoSection = document.createElement('section');
-    videoSection.className = 'video-section';
-    videoSection.id = 'videoSection';
-    wrapper.appendChild(videoSection);
+    function insertSearchForm() {
+        wrapper.className = 'wrapper';
+        wrapper.innerHTML = '<section class="search-field">' +
+            '    <form class="search" autocomplete="off" name="search" method="post">' +
+            '      <input class="input" type="search" id="searchKey" name="searchKey" placeholder="Search" />' +
+            '      <button class="submit" type="submit" name="" value="">' +
+            '      </button>' +
+            '    </form>' +
+            '<button type="submit" id="next">Далее</button>'+
+            '<button type="submit" id="prev">Назад</button>'+
+            '</section>';
+        const wrapperSection = document.querySelector('body');
+        wrapperSection.appendChild(wrapper);
+    }
+
+    function insertVideoSection() {
+        const videoSection = document.createElement('section');
+        videoSection.className = 'video-section';
+        videoSection.id = 'videoSection';
+        wrapper.appendChild(videoSection);
+    }
+
+    function insertDots() {
+        const buttons = document.createElement('section');
+        buttons.className = 'buttons-section';
+        buttons.innerHTML = '<div class="button"><span></span></div>\n' +
+            '            <div class="button"><span></span></div>\n' +
+            '            <div class="button"><span></span></div>';
+
+        wrapper.appendChild(buttons);
+    }
 }
 
 
-function insertVideo(generalInfo, countOfView) {
 
+function insertVideo(generalInfo, countOfView) {
     const videoSection = document.querySelector('.video-section');
- //       document.getElementById(videoSection);
     const videoBox = document.createElement('div');
     videoBox.className = 'container';
 
@@ -38,7 +53,7 @@ function insertVideo(generalInfo, countOfView) {
 
     const image = document.createElement('div');
     image.className = 'image-container';
-    let videoUrl = generalInfo.snippet.thumbnails.medium.url;
+    const videoUrl = generalInfo.snippet.thumbnails.medium.url;
     image.style.backgroundImage = "url("+videoUrl+")";
     innerContainer.appendChild(image);
 
@@ -99,335 +114,192 @@ function insertVideo(generalInfo, countOfView) {
     date.textContent = generalInfo.snippet.publishedAt.substr(0, 10);
     secondElementList.appendChild(date);
 
-    const spanIconEye = document.createElement('span');
-    spanIconEye.className = 'icon';
-    thirdElementList.appendChild(spanIconEye);
+    const spanIconView = document.createElement('span');
+    spanIconView.className = 'icon';
+    thirdElementList.appendChild(spanIconView);
 
-    const iconEye = document.createElement('i');
-    iconEye.className = 'fa fa-eye';
-    spanIconEye.appendChild(iconEye);
+    const iconView = document.createElement('i');
+    iconView.className = 'fa fa-eye';
+    spanIconView.appendChild(iconView);
 
-    const eye = document.createElement('span');
-    eye.className = 'element';
-    eye.textContent = countOfView.statistics.viewCount;
-    thirdElementList.appendChild(eye);
+    const view = document.createElement('span');
+    view.className = 'element';
+    view.textContent = countOfView.statistics.viewCount;
+    thirdElementList.appendChild(view);
 
-    const copeText = document.createElement('p');
-    copeText.className = 'cope-text';
-    copeText.textContent = generalInfo.snippet.description;
-    innerContainer.appendChild(copeText);
-
+    const descriptionVideo = document.createElement('p');
+    descriptionVideo.className = 'cope-text';
+    descriptionVideo.textContent = generalInfo.snippet.description;
+    innerContainer.appendChild(descriptionVideo);
 
     videoSection.appendChild(videoBox);
 }
 
-/*
-function DrawInfo(item) {
-    document.getElementById('videoSection').insertAdjacentHTML('beforeend',
-        `<div class="container">
-<div class="inner-container">
-<div class="image-container" >
-<a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank">
-<span class="name-video">${item.snippet.title}</span></a>
-</div>
-<div class="info">
-<p class="cope-text">${item.snippet.description}</p>
-</div>
-</div>
-</div>`);
-
-}*/
-
-
-
-
-
-/*
-const videoSection = document.createElement('section');
-videoSection.className = 'video-section';
-videoSection.innerHTML = '<div class="container">\n' +
-    '                <div class="inner-container">\n' +
-    '                    <div class="image-container">\n' +
-    '                        <span class="name-video"></span>\n' +
-    '                    </div>\n' +
-    '                    <div class="info">\n' +
-    '                        <ul class="info-list">\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-user"></i></span><span class="element"></span></li>\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-calendar"></i></span><span class="element"></span></li>\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-eye"></i></span><span class="element"></span></li>\n' +
-    '                        </ul>\n' +
-    '                        <p class="cope-text"></p>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div class="container">\n' +
-    '                <div class="inner-container">\n' +
-    '                    <div class="image-container">\n' +
-    '                        <span class="name-video"></span>\n' +
-    '                    </div>\n' +
-    '                    <div class="info">\n' +
-    '                        <ul class="info-list">\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-user"></i></span><span class="element"></span></li>\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-calendar"></i></span><span class="element"></span></li>\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-eye"></i></span><span class="element"></span></li>\n' +
-    '                        </ul>\n' +
-    '                        <p class="cope-text"></p>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div class="container">\n' +
-    '                <div class="inner-container">\n' +
-    '                    <div class="image-container">\n' +
-    '                        <span class="name-video"></span>\n' +
-    '                    </div>\n' +
-    '                    <div class="info">\n' +
-    '                        <ul class="info-list">\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-user"></i></span><span class="element"></span></li>\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-calendar"></i></span><span class="element"></span></li>\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-eye"></i></span><span class="element"></span></li>\n' +
-    '                        </ul>\n' +
-    '                        <p class="cope-text"></p>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div class="container">\n' +
-    '                <div class="inner-container">\n' +
-    '                    <div class="image-container">\n' +
-    '                        <span class="name-video"></span>\n' +
-    '                    </div>\n' +
-    '                    <div class="info">\n' +
-    '                        <ul class="info-list">\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-user"></i></span><span class="element"></span></li>\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-calendar"></i></span><span class="element"></span></li>\n' +
-    '                            <li class="element-list"><span class="icon"><i class="fa fa-eye"></i></span><span class="element"></span></li>\n' +
-    '                        </ul>\n' +
-    '                        <p class="cope-text"></p>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </div>';
-const section = document.querySelector('.wrapper');
-section.appendChild(videoSection);*/
-
-
-
-function insertDots() {
-    const buttons = document.createElement('section');
-    buttons.className = 'buttons-section';
-    buttons.innerHTML = '<div class="button"><span></span></div>\n' +
-        '            <div class="button"><span></span></div>\n' +
-        '            <div class="button"><span></span></div>';
-
-    wrapper.appendChild(buttons);
+function OutputVideo() {
+    videoCount = getCurrentVideoCount();
+    for(let i = 0; i < videoCount; i++){
+        insertVideo(videoDescriptionArray[indexOfLeftVideo + i], videoInfoArray[indexOfLeftVideo + i]);
+    }
+    let num = Math.floor(indexOfLeftVideo/getCurrentVideoCount());
+    if (indexOfLeftVideo !== 0){
+        if (indexOfLeftVideo >= videoInfoArray.length - videoCount){
+            dots[0].innerHTML = '';
+            dots[1].innerHTML = '';
+            dots[2].innerHTML = num + 1;
+        }else {
+            dots[0].innerHTML = '';
+            dots[1].innerHTML = num + 1;
+            dots[2].innerHTML = '';
+        }
+    } else{
+        dots[0].innerText = num + 1;
+        dots[1].innerHTML = '';
+        dots[2].innerHTML = '';
+    }
 }
 
-const apiKey = 'AIzaSyBQfk5quGb0LjS5XGTK5XU9dliPF33IjiM';
+
+
 
 const nextButton = document.getElementById('next');
 const prevButton = document.getElementById('prev');
-let dots = document.getElementsByClassName('button');
+let dots = document.querySelectorAll('.button');
 let nextPageToken;
-let arr = [];
-let arrVideoInfo = [];
-let indexOfVideo = 0;
+let videoDescriptionArray = [];
+let videoInfoArray = [];
 let indexOfLeftVideo = 0;
+document.querySelector('.search').onsubmit = () => sendRequest('');
+nextButton.onclick = () => showNextPage();
+prevButton.onclick = () => showPrevPage();
+window.onresize = () => onResizeWindow();
 
 
 
 function sendRequest(pageToken) {
-
-
     event.preventDefault();
-    console.log("sendRequest");
     document.getElementById('videoSection').innerHTML='';
 
-    const input = document.getElementById('searchKey');
-    let query = input.value;
-    console.log(query);
+    const inputQuery = document.getElementById('searchKey').value;
+    const apiKey = 'AIzaSyBQfk5quGb0LjS5XGTK5XU9dliPF33IjiM';
     let fetchRequest;
     if (pageToken !== ''){
-
-        fetchRequest = `https://www.googleapis.com/youtube/v3/search?pageToken=${pageToken}&type=video&part=snippet&maxResults=15&order=relevance&key=${apiKey}&q=${query}`;
+        fetchRequest = `https://www.googleapis.com/youtube/v3/search?pageToken=${pageToken}&type=video&part=snippet&maxResults=15&order=relevance&key=${apiKey}&q=${inputQuery}`;
     }
     else{
-        console.log('qwerty');
-        arr = [];
-        arrVideoInfo = [];
+        videoDescriptionArray = [];
+        videoInfoArray = [];
         indexOfLeftVideo = 0;
-        fetchRequest = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&order=relevance&key=${apiKey}&q=${query}`
+        fetchRequest = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&order=relevance&key=${apiKey}&q=${inputQuery}`
     }
-    let response = fetch(fetchRequest)
+
+    fetch(fetchRequest)
         .then(response=>{
-            console.log(1);
+            if (response.status !== 200) {
+                console.log(`Sorry, there was a problem. Status: ${
+                    response.status}`);
+                return;
+            }
             return response.text()})
-        .then(text=>{
-            console.log(2);
-            return text.length ? JSON.parse(text) : {}})
+        .then(text => text.length ? JSON.parse(text) : {})
         .then(data=>{
             nextPageToken = data.nextPageToken;
             let idVideo = '';
             data.items.forEach((item) => {
-                arr.push(item);
-                console.log(item);
-                // DrawInfo(item);
+                videoDescriptionArray.push(item);
                 idVideo += `${item.id.videoId},`;
             });
             fetch (`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${idVideo}&key=${apiKey}`)
-                .then(response =>{
+                .then(response=>{
+                    if (response.status !== 200) {
+                        console.log(`Sorry, there was a problem. Status: ${
+                            response.status}`);
+                        return;
+                    }
                     return response.text()})
-                .then(text=>{
-                    console.log(2);
-                    return text.length ? JSON.parse(text) : {}})
+                .then(text => text.length ? JSON.parse(text) : {})
                 .then(data=> {
                     data.items.forEach((item) => {
-                        arrVideoInfo.push(item);
-                        console.log(item);
-                        // DrawInfo(item);
+                        videoInfoArray.push(item);
                     });
-                    console.log(arr);
-                    console.log(arrVideoInfo);
                     OutputVideo();
-
-
                 });
-
-
         })
         .catch((error)=>console.log(error));
-
-    /*<iframe id="ytplayer" type="text/html" width="720" height="405"
-
-
-<a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank">
-<img src="http://i.ytimg.com/vi/${item.id.videoId}/mqdefault.jpg"></a>
-
-    src="https://www.youtube.com/embed/${item.id.videoId}"
-    frameborder="0" allowfullscreen>
-
-    `<class="container">
-<div class="inner-container">
-<div class="image-container" style="background: url("http://i.ytimg.com/vi/${item.id.videoId}/mqdefault.jpg");">
-<a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank">
-<span class="name-video">${item.snippet.title}</span></a>
-</div>
-<div class="info">
-<p class="cope-text">${item.snippet.description}</p>
-</div>
-</div>
-</div>`
-
-
-    */
 };
 
-function OutputVideo() {
-    console.log('OutputVideo');
-    videoCount = getCurrentVideoCount();
-    console.log('OutputVideo'+videoCount);
-    for(let i = 0; i < videoCount; i++){
-      //  DrawInfo(arr[indexOfLeftVideo + i]);
-        insertVideo(arr[indexOfLeftVideo + i], arrVideoInfo[indexOfLeftVideo + i]);
+function showNextPage() {
+    const countOfVideo = getCurrentVideoCount();
+    let arrOfElement = document.querySelectorAll('.container');
+    for (let i = 0; i < countOfVideo; i++){
+        arrOfElement[i].remove();
     }
-    //for (let i =0; i<3; i++){
-    let num = Math.floor(indexOfLeftVideo/getCurrentVideoCount());
-    dots[0].innerText = num + 1;
-    dots[1].innerText = num + 2;
-    dots[2].innerText = num + 3;
-    //  }
+
+    indexOfLeftVideo += countOfVideo;
+    /*   if((videoDescriptionArray.length - indexOfLeftVideo - countOfVideo) <= countOfVideo) {
+           sendRequest(nextPageToken);
+       }
+       else {
+           OutputVideo();
+       }*/
+    (videoDescriptionArray.length - indexOfLeftVideo <= 2*countOfVideo) ?  sendRequest(nextPageToken) :  OutputVideo();
+
 }
 
-
-document.querySelector('.search').onsubmit = ()=> sendRequest('');
-/*button.onclick = () => sendRequest('');*/
-nextButton.onclick = () =>{
-    // sendRequest(nextPageToken);
-    console.log('onClick');
-    let arrOfElement = document.getElementsByClassName('container');
-    console.log(arrOfElement);
-    for (let i=0; i< getCurrentVideoCount(); i++){
-        console.log('remove '+i+' qwwe');
-        arrOfElement[0].remove();
+function showPrevPage(){
+    const countOfVideo = getCurrentVideoCount();
+    let arrOfElement = document.querySelectorAll('.container');
+    for (let i = 0; i < countOfVideo; i++){
+        arrOfElement[i].remove();
     }
-
-    indexOfLeftVideo+=getCurrentVideoCount();
-    console.log('zzz'+indexOfLeftVideo);
-    //console.log(indexOfLeftVideo);
-    //условие додумать, когда добавлять видосики
-    if((arr.length - indexOfLeftVideo -getCurrentVideoCount()) <= getCurrentVideoCount()) {
-        console.log('qw' + (arr.length - indexOfLeftVideo -getCurrentVideoCount()));
-        sendRequest(nextPageToken);
-
-    }
-    else {
-        OutputVideo();
-    }
-};
-
-prevButton.onclick = () => {
-    let arrOfElement = document.getElementsByClassName('container');
-    for (let i=0; i< getCurrentVideoCount(); i++){
-        console.log('remove '+i+' qwwe');
-        arrOfElement[0].remove();
-    }
-    indexOfLeftVideo-=getCurrentVideoCount();
+    indexOfLeftVideo -= countOfVideo;
     OutputVideo();
 };
 
 
 let videoCount;
-window.onresize = function () {
-    console.log('onResize');
-    console.log('qwerty'+videoCount);
-    if (window.screen.availWidth <= 1170 && videoCount == 4) {
-        document.getElementsByClassName('container')[3].remove();
+function onResizeWindow(){
+    if (window.screen.availWidth < BIG_SCREEN_MIN_WIDTH && videoCount == 4) {
+        document.querySelectorAll('.container')[3].remove();
         videoCount = 3;
-        console.log('ss1'+videoCount);
     }
 
-    if (window.screen.availWidth <= 860 && videoCount == 3) {
-        document.getElementsByClassName('container')[2].remove();
+    if (window.screen.availWidth < MEDIUM_SCREEN_MIN_WIDTH && videoCount == 3) {
+        document.querySelectorAll('.container')[2].remove();
         videoCount = 2;
-        console.log('ss2'+videoCount);
     }
 
-    if (window.screen.availWidth <= 595 && videoCount == 2) {
-        document.getElementsByClassName('container')[1].remove();
+    if (window.screen.availWidth < SMALL_SCREEN_MAX_WIDTH && videoCount == 2) {
+        document.querySelectorAll('.container')[1].remove();
         videoCount = 1;
-        console.log('ss3'+videoCount);
     }
 
-
-    if (window.screen.availWidth > 595 && videoCount == 1) {
-        insertVideo(arr[indexOfLeftVideo + 1], arrVideoInfo[indexOfLeftVideo + 1]);
+    if (window.screen.availWidth >= SMALL_SCREEN_MAX_WIDTH && videoCount == 1) {
+        insertVideo(videoDescriptionArray[indexOfLeftVideo + 1], videoInfoArray[indexOfLeftVideo + 1]);
         videoCount = 2;
-        console.log(videoCount);
     }
 
-    if (window.screen.availWidth > 860 && videoCount == 2) {
-        insertVideo(arr[indexOfLeftVideo + 2], arrVideoInfo[indexOfLeftVideo + 2]);
+    if (window.screen.availWidth >= MEDIUM_SCREEN_MIN_WIDTH && videoCount == 2) {
+        insertVideo(videoDescriptionArray[indexOfLeftVideo + 2], videoInfoArray[indexOfLeftVideo + 2]);
         videoCount = 3;
     }
 
-    if (window.screen.availWidth > 1170 && videoCount == 3) {
-        console.log(indexOfLeftVideo + '11111111');
-        console.log(arr[indexOfLeftVideo+4]);
-        insertVideo(arr[indexOfLeftVideo + 3], arrVideoInfo[indexOfLeftVideo + 3]);
+    if (window.screen.availWidth >= BIG_SCREEN_MIN_WIDTH && videoCount == 3) {
+        insertVideo(videoDescriptionArray[indexOfLeftVideo + 3], videoInfoArray[indexOfLeftVideo + 3]);
         videoCount = 4;
-
     }
-
 };
 
+const BIG_SCREEN_MIN_WIDTH = 1200;
+const MEDIUM_SCREEN_MIN_WIDTH = 768;
+const SMALL_SCREEN_MAX_WIDTH = 481;
+
 function getCurrentVideoCount(){
-    console.log(window.screen.availWidth);
-    if(window.screen.availWidth <= 595)
+    if(window.screen.availWidth <= SMALL_SCREEN_MAX_WIDTH)
         return 1;
     else
-    if(window.screen.availWidth >= 595)
-        if(window.screen.availWidth >= 861)
-            if(window.screen.availWidth >= 1170)
+    if(window.screen.availWidth > SMALL_SCREEN_MAX_WIDTH)
+        if(window.screen.availWidth >= MEDIUM_SCREEN_MIN_WIDTH)
+            if(window.screen.availWidth >= BIG_SCREEN_MIN_WIDTH)
                 return 4;
             else
                 return 3;

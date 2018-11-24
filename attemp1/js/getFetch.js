@@ -2,7 +2,7 @@ const apiKey = 'AIzaSyBQfk5quGb0LjS5XGTK5XU9dliPF33IjiM';
 
 const nextButton = document.getElementById('next');
 const prevButton = document.getElementById('prev');
-let dots = document.getElementsByClassName('button');
+let dots = document.querySelectorAll('.button');
 let nextPageToken;
 let arr = [];
 let arrVideoInfo = [];
