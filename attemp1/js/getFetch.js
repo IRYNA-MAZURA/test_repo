@@ -1,9 +1,11 @@
 const apiKey = 'AIzaSyBQfk5quGb0LjS5XGTK5XU9dliPF33IjiM';
 
-const button = document.getElementById('submit');
 const nextButton = document.getElementById('next');
+const prevButton = document.getElementById('prev');
+let dots = document.getElementsByClassName('button');
 let nextPageToken;
 let arr = [];
+let arrVideoInfo = [];
 let indexOfVideo = 0;
 let indexOfLeftVideo = 0;
 
@@ -27,6 +29,7 @@ function sendRequest(pageToken) {
     else{
         console.log('qwerty');
         arr = [];
+        arrVideoInfo = [];
         fetchRequest = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&order=relevance&key=${apiKey}&q=${query}`
     }
     let response = fetch(fetchRequest)
@@ -40,13 +43,30 @@ function sendRequest(pageToken) {
             nextPageToken = data.nextPageToken;
             console.log(nextPageToken);
             console.log(3);
+            let idVideo = ''
             data.items.forEach((item) => {
                 arr.push(item);
                     console.log(item);
                    // DrawInfo(item);
+                idVideo += `${item.id.videoId},`;
+            });
+            fetch (`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${idVideo}&key=${apiKey}`)
+                .then(response =>{
+                    return response.text()})
+                .then(text=>{
+                    console.log(2);
+                    return text.length ? JSON.parse(text) : {}})
+                .then(data=> {
+                    data.items.forEach((item) => {
+                        arrVideoInfo.push(item);
+                        console.log(item);
+                        // DrawInfo(item);
+                    });
 
-            })
+
+                });
             console.log(arr);
+            console.log(arrVideoInfo);
             OutputVideo();
 
         })
@@ -84,6 +104,12 @@ function OutputVideo() {
     for(let i = 0; i < videoCount; i++){
         DrawInfo(arr[indexOfLeftVideo + i]);
     }
+    //for (let i =0; i<3; i++){
+    let num = Math.floor(indexOfLeftVideo/getCurrentVideoCount());
+        dots[0].innerText = num + 1;
+        dots[1].innerText = num + 2;
+    dots[2].innerText = num + 3;
+  //  }
 }
 
 function DrawInfo(item) {
@@ -126,6 +152,16 @@ nextButton.onclick = () =>{
     else {
         OutputVideo();
     }
+};
+
+prevButton.onclick = () => {
+    let arrOfElement = document.getElementsByClassName('container');
+    for (let i=0; i< getCurrentVideoCount(); i++){
+        console.log('remove '+i+' qwwe');
+        arrOfElement[0].remove();
+    }
+    indexOfLeftVideo-=getCurrentVideoCount();
+    OutputVideo();
 };
 
 
