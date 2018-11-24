@@ -27,6 +27,16 @@ function insertLayout() {
         videoSection.className = 'video-section';
         videoSection.id = 'videoSection';
         wrapper.appendChild(videoSection);
+        const slider = document.createElement('div');
+        slider.classList.add('content-slider', '-animated');
+        slider.style.left = '0';
+
+        videoSection.appendChild(slider);
+      //  videoSection.onmousemove = mouseMove;
+      //  videoSection.onmousedown = mouseDown;
+        videoSection.addEventListener('mousedown', swipeStart, false);
+        videoSection.addEventListener('touchstart', swipeStart, false);
+     //   videoSection.onmouseup = mouseUp;
     }
 
     function insertDots() {
@@ -43,7 +53,8 @@ function insertLayout() {
 
 
 function insertVideo(generalInfo, countOfView) {
-    const videoSection = document.querySelector('.video-section');
+    const videoSection = document.querySelector('.content-slider');
+
     const videoBox = document.createElement('div');
     videoBox.className = 'container';
 
@@ -177,7 +188,8 @@ window.onresize = () => onResizeWindow();
 
 function sendRequest(pageToken) {
     event.preventDefault();
-    document.getElementById('videoSection').innerHTML='';
+   // document.getElementById('videoSection').innerHTML='';
+    document.querySelector('.content-slider').innerHTML = '';
 
     const inputQuery = document.getElementById('searchKey').value;
     const apiKey = 'AIzaSyBQfk5quGb0LjS5XGTK5XU9dliPF33IjiM';
@@ -305,6 +317,98 @@ function getCurrentVideoCount(){
                 return 3;
         else
             return 2;
+}
+
+
+
+////LETS WORK WITH MOUSE////
+
+/*movement*/
+//flag
+let movable = false;
+//save click position
+let clickX;
+
+
+
+
+
+
+function handleSwipeMove(e) {
+    const slider = document.querySelector('.content-slider');
+    const clientX = e.clientX || e.changedTouches[0].clientX;
+    let left = handleSwipeMove.left + (clientX - handleSwipeMove.startX);
+
+    if (left > 200) left = 200;
+    slider.style.left = `${left}px`;
+}
+
+function handleSwipeEnd(e) {
+    const slider = document.querySelector('.content-slider');
+    const width = document.querySelector('.video-section').clientWidth;
+    const sliderWidth = slider.clientWidth;
+    const left = parseInt(slider.style.left, 10);
+    const endX = e.clientX || e.changedTouches[0].clientX;
+
+    slider.classList.add('-animated');
+    document.removeEventListener('mousemove', handleSwipeEnd.func, false);
+    document.removeEventListener('mouseup', handleSwipeEnd, false);
+    document.removeEventListener('touchmove', handleSwipeEnd.func, false);
+    document.removeEventListener('touchend', handleSwipeEnd, false);
+
+    if (left > 0) slider.style.left = '0px';
+
+    if (endX - handleSwipeEnd.startX < 0){
+
+        slider.style.left = `-${(Math.floor(Math.abs(left) / width) + 1) * width}px`;
+        const countOfVideo = getCurrentVideoCount();
+        let arrOfElement = document.querySelectorAll('.container');
+        for (let i = 0; i < countOfVideo; i++){
+            arrOfElement[i].remove();
+        }
+
+        indexOfLeftVideo += countOfVideo;
+        /*   if((videoDescriptionArray.length - indexOfLeftVideo - countOfVideo) <= countOfVideo) {
+               sendRequest(nextPageToken);
+           }
+           else {
+               OutputVideo();
+           }*/
+        (videoDescriptionArray.length - indexOfLeftVideo <= 2*countOfVideo) ?  sendRequest(nextPageToken) :  OutputVideo();
+        slider.style.left = '0px';
+    }
+    else if (endX - handleSwipeEnd.startX > 0){
+        slider.style.left = `-${(Math.floor(Math.abs(left) / width)) * width}px`;
+        const countOfVideo = getCurrentVideoCount();
+        let arrOfElement = document.querySelectorAll('.container');
+        for (let i = 0; i < countOfVideo; i++){
+            arrOfElement[i].remove();
+        }
+        indexOfLeftVideo -= countOfVideo;
+        OutputVideo();
+        slider.style.left = '0px';
+
+
+    }
+}
+
+
+function swipeStart(e){
+    if (e.button === 0 || e.type === 'touchstart') {
+        const slider = document.querySelector('.content-slider');
+        const left = parseInt(slider.style.left, 10);
+
+        slider.classList.remove('-animated');
+        handleSwipeMove.startX = e.clientX || e.changedTouches[0].clientX;
+        handleSwipeMove.left = left;
+        handleSwipeEnd.func = handleSwipeMove;
+        handleSwipeEnd.startX = e.clientX || e.changedTouches[0].clientX;
+
+        document.addEventListener('mousemove', handleSwipeMove, false);
+        document.addEventListener('mouseup', handleSwipeEnd, false);
+        document.addEventListener('touchmove', handleSwipeMove, false);
+        document.addEventListener('touchend', handleSwipeEnd, false);
+    }
 }
 
 
