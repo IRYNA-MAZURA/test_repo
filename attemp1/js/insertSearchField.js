@@ -379,13 +379,19 @@ function handleSwipeEnd(e) {
     }
     else if (endX - handleSwipeEnd.startX > 0){
         slider.style.left = `-${(Math.floor(Math.abs(left) / width)) * width}px`;
+
         const countOfVideo = getCurrentVideoCount();
-        let arrOfElement = document.querySelectorAll('.container');
-        for (let i = 0; i < countOfVideo; i++){
-            arrOfElement[i].remove();
-        }
         indexOfLeftVideo -= countOfVideo;
-        OutputVideo();
+        if (indexOfLeftVideo >=0){
+            let arrOfElement = document.querySelectorAll('.container');
+            for (let i = 0; i < countOfVideo; i++){
+                arrOfElement[i].remove();
+            }
+
+            OutputVideo();
+        }else{
+            indexOfLeftVideo = 0;
+        }
         slider.style.left = '0px';
 
 
